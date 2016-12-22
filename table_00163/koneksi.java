@@ -1,22 +1,21 @@
 package table;
 
-//Step 1: Use interfaces from java.sql package 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class koneksi {
-	//static reference to itself
+	//definisi varible
 	private static koneksi instance = new koneksi();
 	public static final String URL = "jdbc:mysql://localhost/java";
 	public static final String USER = "root";
-	public static final String PASSWORD = "aku";
+	public static final String PASSWORD = "";
 	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 
 	
-	//private constructor
+	//constructor
 	koneksi() {
 		try {
-			//Step 2: Load MySQL Java driver
+			//memanggil driver
 			Class.forName(DRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -27,7 +26,7 @@ public class koneksi {
 
 		Connection connection = null;
 		try {
-			//Step 3: Establish Java MySQL connection
+			//membuat sambungan ke database
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (SQLException e) {
 			System.out.println("ERROR: Unable to Connect to Database.");
